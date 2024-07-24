@@ -1,0 +1,177 @@
+// /* Ensure the confirm dialog is responsive and stylish */
+// :host ::ng-deep .p-confirm-dialog {
+//     width: 50vw; /* Default width */
+//     max-width: 90%; /* Max width to prevent it from getting too wide */
+//     border-radius: 8px; /* Rounded corners */
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+//   }
+
+//   :host ::ng-deep .p-confirm-dialog .p-dialog-content {
+//     padding: 20px; /* Add padding for better spacing */
+//     background-color: #f5f5f5; /* Light background color */
+//   }
+
+//   :host ::ng-deep .p-confirm-dialog .p-dialog-header {
+//     background-color: #0f233f; /* Dark header background */
+//     color: white; /* White text color */
+//     border-top-left-radius: 8px; /* Match rounded corners */
+//     border-top-right-radius: 8px; /* Match rounded corners */
+//   }
+
+//   :host ::ng-deep .p-confirm-dialog .p-dialog-header .p-dialog-title {
+//     font-weight: bold; /* Bold title */
+//   }
+
+//   :host ::ng-deep .p-confirm-dialog .p-dialog-footer {
+//     background-color: #f5f5f5; /* Match background color */
+//     border-bottom-left-radius: 8px; /* Match rounded corners */
+//     border-bottom-right-radius: 8px; /* Match rounded corners */
+//   }
+
+//   :host ::ng-deep .p-confirm-dialog .p-button {
+//     margin: 0 5px; /* Space between buttons */
+//   }
+
+//   :host ::ng-deep .p-confirm-dialog .p-button-primary {
+//     background-color: #0f233f; /* Primary button background */
+//     border-color: #0f233f; /* Match border color */
+//     color: white; /* White text color */
+//   }
+
+//   :host ::ng-deep .p-confirm-dialog .p-button-secondary {
+//     background-color: #e0e0e0; /* Secondary button background */
+//     border-color: #e0e0e0; /* Match border color */
+//     color: #333; /* Dark text color */
+//   }
+
+//   @media (max-width: 1200px) {
+//     :host ::ng-deep .p-confirm-dialog {
+//       width: 70vw; /* Adjust width for medium screens */
+//     }
+//   }
+
+//   @media (max-width: 768px) {
+//     :host ::ng-deep .p-confirm-dialog {
+//       width: 90vw; /* Adjust width for small screens */
+//     }
+//   }
+
+/* Default styles for the confirm dialog */
+:host ::ng-deep .p-confirm-dialog {
+    width: 50vw;
+    /* Default width */
+    max-width: 90%;
+    /* Max width to prevent it from getting too wide */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    overflow: hidden;
+    /* Ensure content stays within rounded corners */
+}
+
+/* Dialog content styling */
+:host ::ng-deep .p-confirm-dialog .p-dialog-content {
+    padding: 20px;
+    /* Add padding for better spacing */
+    background-color: #f5f5f5;
+    /* Light background color */
+}
+
+// :host ::ng-deep svg.p-icon {
+//     color: white !important
+// }
+
+// :host ::ng-deep .p-dialog-header-icon {
+//     background: transparent !important;
+// }
+
+/* Dialog header styling */
+:host ::ng-deep .p-confirm-dialog .p-dialog-header {
+    background-color: #0f233f;
+    /* Dark header background */
+    color: white;
+    /* White text color */
+    border-top-left-radius: 8px;
+    /* Match rounded corners */
+    border-top-right-radius: 8px;
+    /* Match rounded corners */
+    padding: 15px;
+    /* Add padding for better spacing */
+}
+
+/* Dialog title styling */
+:host ::ng-deep .p-confirm-dialog .p-dialog-header .p-dialog-title {
+    font-weight: bold;
+    /* Bold title */
+}
+
+/* Dialog footer styling */
+:host ::ng-deep .p-confirm-dialog .p-dialog-footer {
+    background-color: #f5f5f5;
+    /* Match background color */
+    border-bottom-left-radius: 8px;
+    /* Match rounded corners */
+    border-bottom-right-radius: 8px;
+    /* Match rounded corners */
+    padding: 15px;
+    /* Add padding for better spacing */
+    display: flex;
+    /* Use flexbox for alignment */
+    justify-content: flex-end;
+    /* Align buttons to the right */
+}
+
+/* Button styling */
+:host ::ng-deep .p-confirm-dialog .p-button {
+    margin: 0 5px;
+    /* Space between buttons */
+}
+
+:host ::ng-deep .p-confirm-dialog .p-button-primary {
+    background-color: #0f233f;
+    /* Primary button background */
+    border-color: #0f233f;
+    /* Match border color */
+    color: white;
+    /* White text color */
+}
+
+:host ::ng-deep .p-confirm-dialog .p-button-secondary {
+    background-color: #e0e0e0;
+    /* Secondary button background */
+    border-color: #e0e0e0;
+    /* Match border color */
+    color: #333;
+    /* Dark text color */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+    :host ::ng-deep .p-confirm-dialog {
+        width: 70vw;
+        /* Adjust width for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    :host ::ng-deep .p-confirm-dialog {
+        width: 90vw;
+        /* Adjust width for small screens */
+        border-radius: 4px;
+        /* Slightly less rounded corners */
+    }
+
+    :host ::ng-deep .p-confirm-dialog .p-dialog-header,
+    :host ::ng-deep .p-confirm-dialog .p-dialog-footer {
+        padding: 10px;
+        /* Adjust padding for smaller screens */
+    }
+
+    :host ::ng-deep .p-confirm-dialog .p-button {
+        margin: 0 2px;
+        /* Reduce margin between buttons */
+        padding: 8px 12px;
+        /* Adjust button padding for smaller screens */
+    }
+}

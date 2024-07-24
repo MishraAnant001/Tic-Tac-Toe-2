@@ -1,0 +1,85 @@
+<h3 class="text-center my-3">Game's Data</h3>
+<p-table [value]="gameData" [paginator]="true" [rows]="5" styleClass="p-datatable-striped"
+  [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem' }"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5, 10, 50]">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Game ID</th>
+      <th>Status</th>
+      <th>Created By</th>
+      <th>Created On</th>
+      <th>Players</th>
+      <th>Action</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-game>
+    <tr>
+      <td>{{ game._id }}</td>
+      <td>{{ game.gameStatus }}</td>
+      <td>{{ game.user }}</td>
+      <td>{{ game.createdAt | date: 'short' }}</td>
+      <td>
+        <ul>
+          <li *ngFor="let player of game.players">{{ player.name }}</li>
+        </ul>
+      </td>
+      <td><button class="btn btn-outline-success" (click)="onView(game)" data-bs-toggle="modal"
+          data-bs-target="#modelId">View</button></td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex justify-content-between">
+        <h5 class="modal-title">Game Data</h5>
+        <button class="close btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body ">
+        <div class="container-fluid">
+          <div *ngIf="game">
+            <h2 class="mb-4 p-0">Game Board</h2>
+            <div class="board p-0 shadow-lg">
+              <div class="row p-0 m-0" *ngFor="let row of game.board; let r = index">
+                <div class="col p-0" *ngFor="let cell of row; let c = index">
+                  <div class="cell" [ngStyle]="{'background-color': cell}">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 table-responsive">
+              <h3>Scores</h3>
+              <table class="table table-bordered ">
+                <thead>
+                  <tr>
+                    <th>Player</th>
+                    <th>Color</th>
+                    <th>Points</th>
+                    <th>Blocks</th>
+                    <th>Rank</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let score of game.scores">
+                    <td>{{ score.player }}</td>
+                    <td>
+                      <span class="color-box" [ngStyle]="{'background-color': getColor(score.player)}"></span>
+                    </td>
+                    <td>{{ score.points }}</td>
+                    <td>{{ score.blocks }}</td>
+                    <td>{{ score.rank }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

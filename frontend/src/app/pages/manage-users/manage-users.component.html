@@ -1,0 +1,26 @@
+<h3 class="text-center my-3">User's Data</h3>
+<p-table     [value]="userData"
+[paginator]="true"
+[rows]="5"
+styleClass="p-datatable-striped"
+[showCurrentPageReport]="true"
+[tableStyle]="{ 'min-width': '50rem' }"
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+[rowsPerPageOptions]="[5, 10, 50]">
+  <ng-template pTemplate="header">
+      <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Join Date</th>
+          <th>Action</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-user>
+      <tr>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.createdAt | date : "fullDate" }} </td>
+          <td><button class="btn btn-outline-danger" (click)="onDelete(user)">Delete</button></td>
+      </tr>
+  </ng-template>
+</p-table>

@@ -1,0 +1,109 @@
+.accordion-button::after {
+  display: none !important;
+}
+
+a:hover {
+  background-color: rgb(15 35 63) !important;
+  color: white !important;
+}
+
+.accordion-button:hover {
+  background-color:rgb(15 35 63) !important;
+  color: white !important;
+}
+
+.active {
+  background-color: rgb(26 79 153) !important;
+  color: white !important;
+} 
+
+// .accordion-button:not(.active) {
+//   background-color: white !important;
+//   color: inherit !important; /* Ensures text color inherits from the parent */
+// }
+
+/* Center the logo */
+.container-fluid {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.container-fluid img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Style for the accordion */
+.accordion {
+  max-width: 500px; /* Adjust as needed */
+  margin: 0 auto; /* Center horizontally */
+}
+
+.accordion-button {
+  background-color: #f8f9fa; /* Light background */
+  color: #343a40; /* Dark text */
+  border: 1px solid #dee2e6; /* Border color */
+  border-radius: 0.25rem;
+  padding: 0.75rem 1.25rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+// .accordion-button:not(.collapsed) {
+//   background-color: #007bff; /* Blue background when active */
+//   color: white; /* White text when active */
+// }
+
+// .accordion-button:hover {
+//   background-color: #0056b3; /* Darker blue on hover */
+//   color: white;
+// }
+
+.accordion-header {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.accordion-item {
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem; /* Space between accordion items */
+}
+
+.accordion-body {
+  padding: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 576px) {
+  .container-fluid {
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .accordion {
+    max-width: 100%; /* Full width on mobile */
+  }
+
+  .accordion-button {
+    padding: 0.5rem 1rem; /* Adjust padding for smaller screens */
+    font-size: 0.875rem; /* Smaller font size */
+  }
+
+  .accordion-body {
+    padding: 0.75rem; /* Adjust padding for smaller screens */
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .accordion-button {
+    padding: 0.75rem 1.25rem; /* Adjust padding for tablets */
+    font-size: 1rem; /* Adjust font size for tablets */
+  }
+}
+
+@media (min-width: 769px) {
+  .accordion-button {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+}
