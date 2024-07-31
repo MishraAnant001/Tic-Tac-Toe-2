@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DashboardService {
-  private adminApi = "http://localhost:8000/api/v1/dashboard/admin"
+  private adminApi = "http://192.168.4.5:8000/api/v1/dashboard/admin"
   constructor(private http:HttpClient) { }
 
   getAdminData(){

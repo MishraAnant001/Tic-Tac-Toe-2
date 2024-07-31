@@ -31,7 +31,8 @@ export interface IGame {
     scores: IScore[];                 // Array of scores for each player
     gameStatus: 'ongoing' | 'finished'; // Current status of the game
     user:string,
-    createdAt:Date
+    createdAt:Date,
+    winningStatus:string
 }
 
 export interface ICreateGameRequest {

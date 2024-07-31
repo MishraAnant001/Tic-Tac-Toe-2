@@ -8,7 +8,7 @@ import { ICreateGameRequest, IMakeMoveRequest } from 'src/app/models';
   providedIn: 'root',
 })
 export class GameService {
-  private apiUrl = 'http://localhost:8000/api/v1/game/';
+  private apiUrl = 'http://192.168.4.5:8000/api/v1/game/';
   constructor(private http: HttpClient) {}
   createGame(data: ICreateGameRequest): Observable<any> {
     return this.http.post(this.apiUrl + 'create', data);

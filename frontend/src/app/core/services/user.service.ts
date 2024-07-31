@@ -6,9 +6,9 @@ import { IUser } from 'src/app/models';
   providedIn: 'root'
 })
 export class UserService {
-  private signupApi = "http://localhost:8000/api/v1/user/signup"
-  private loginApi = "http://localhost:8000/api/v1/user/login"
-  private getApi = "http://localhost:8000/api/v1/user/"
+  private signupApi = "http://192.168.4.5:8000/api/v1/user/signup"
+  private loginApi = "http://192.168.4.5:8000/api/v1/user/login"
+  private getApi = "http://192.168.4.5:8000/api/v1/user/"
   constructor(private http: HttpClient) { }
 
   signupUser(data: IUser) {

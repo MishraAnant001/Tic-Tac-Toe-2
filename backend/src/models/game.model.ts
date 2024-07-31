@@ -10,18 +10,26 @@ const gameSchema = new mongoose.Schema(
       required: true,
     },
     gridSize: { type: Number, required: true },
-    players: [playerSchema], // Array of Player sub-documents
+    players: [playerSchema],
     currentPlayerIndex: { type: Number, default: 0 },
-    board: [[{ type: String, default: "" }]], // NxN grid
-    scores: [scoreSchema], // Array of Score sub-documents
+    board: [[{ type: String, default: "" }]],
+    scores: [scoreSchema],
     gameStatus: {
       type: String,
       enum: ["ongoing", "finished"],
       default: "ongoing",
     },
+    winningStatus:String,
+    horizontal_array:Array<Number>,
+    vertical_array:Array<Number>,
+    diagonal_array:Array<Number>,
+    left_diagonal_row:Array<Number>,
+    left_diagonal_col:Array<Number>,
+    right_diagonal_row:Array<Number>,
+    right_diagonal_col:Array<Number>,
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 

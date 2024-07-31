@@ -31,4 +31,14 @@ export class GameController{
             next(error)
         }
     }
+    async getGame(req:Request,res:Response,next:NextFunction){
+        try {
+            const {id}=req.params
+            const response = await service.getGame(id)
+            res.status(SUCCESS_CODES.OK).json(response)
+        } catch (error) {
+            next(error)
+        }
+    }
+
 }
