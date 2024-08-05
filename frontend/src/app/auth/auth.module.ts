@@ -35,7 +35,7 @@ import { FacebookLoginProvider, GoogleLoginProvider, GoogleSigninButtonModule, S
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('')
+            provider: new FacebookLoginProvider('902556711697761')
           }
         ],
         onError: (err) => {

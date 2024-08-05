@@ -26,7 +26,12 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
   },
-  googleId: {
+  socialLoginId: {
+    type: String,
+    unique: true,
+    sparse: true,
+  },
+  socialLoginProvider: {
     type: String,
     unique: true,
     sparse: true,

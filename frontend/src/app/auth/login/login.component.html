@@ -3,14 +3,16 @@
     <h3 class="text-center">Login</h3>
     <div class="mb-3">
       <label class="form-label">Email address</label>
-      <input type="text" class="form-control" formControlName="email" [ngClass]="{'is-invalid': submitted && f['email'].errors}">
+      <input type="text" class="form-control" formControlName="email"
+        [ngClass]="{'is-invalid': submitted && f['email'].errors}">
       <div class="invalid-feedback" *ngIf="submitted && f['email'].errors">
         <div *ngIf="f['email'].errors['required']" class="text-danger">Email is required</div>
       </div>
     </div>
     <div class="mb-3">
       <label class="form-label">Password</label>
-      <input type="password" class="form-control" formControlName="password" [ngClass]="{'is-invalid': submitted && f['password'].errors}">
+      <input type="password" class="form-control" formControlName="password"
+        [ngClass]="{'is-invalid': submitted && f['password'].errors}">
       <div class="invalid-feedback " *ngIf="submitted && f['password'].errors">
         <div *ngIf="f['password'].errors['required']" class="text-danger">Password is required</div>
       </div>
@@ -21,11 +23,16 @@
     </div>
     <div class="container-fluid p-0 d-flex flex-column align-items-center justify-content-center">
       <button type="submit" class="btn btn-primary w-100 text-white mb-2">Submit</button>
-
-      <div (click)="onGoogleLogin()" class="p-2">
+      <div class="d-flex justify-content-center gap-2 align-items-center">
         <asl-google-signin-button type='icon' size='medium' shape="pill" theme="filled_blue"></asl-google-signin-button>
+        <i (click)="signInWithFB()" class="bi bi-facebook text-primary fb"></i>
       </div>
-      
+      <!-- <div>
+        <button (click)="hii($event)">
+          <asl-google-signin-button type='icon' size='medium' shape="pill"
+            theme="filled_blue"></asl-google-signin-button>
+        </button>
+      </div> -->
       <!-- <button (click)="signInWithGoogle()" type="button" class="btn btn-primary w-100 text-white my-2">Sign in with Google</button> -->
       <div class="mt-2">
         <span class="fw-bold">New user?</span>

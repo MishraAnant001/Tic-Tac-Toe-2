@@ -17,12 +17,13 @@ export class UserService {
   loginUser(data: { email: string, password: string, remember: boolean }) {
     return this.http.post(this.loginApi, data, { observe: "response" })
   }
-  googleLogin(data: {
+  socialLogin(data: {
     name: string,
     email: string,
-    googleId: string
+    socialLoginId: string,
+    socialLoginProvider: string,
   }) {
-    return this.http.post(this.loginApi + "/google", data, { observe: "response" })
+    return this.http.post(this.loginApi + "/social", data, { observe: "response" })
   }
   getAllUsers() {
     return this.http.get(this.getApi)

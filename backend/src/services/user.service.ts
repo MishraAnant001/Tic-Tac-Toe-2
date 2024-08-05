@@ -5,7 +5,7 @@ import { ApiError, ApiResponse } from "../utils";
 import config from "config"
 import { ERROR_CODES, SUCCESS_CODES } from "../constants";
 import { ICredentials, IUser } from "../interfaces";
-import { googleAuthService } from "./auth.service";
+import { findOrCreateSocialUser } from "./auth.service";
 
 export class UserService{
     async signupUser(userdata:IUser){
@@ -30,8 +30,8 @@ export class UserService{
         return new ApiResponse(SUCCESS_CODES.OK,{accessToken,refreshToken,user},"Login Successfull")
     }       
 
-    async googleLogin(data:IUser) {
-        let user = await googleAuthService.findOrCreateGoogleUser(data);
+    async socialLogin(data:IUser) {
+        const user = await findOrCreateSocialUser(data)
         const accessSecretKey: string = config.get('ACCESS_SECRET_KEY');
         const accessExpiry: string = config.get('ACCESS_TOKEN_EXPIRY_TIME');
         const refreshExpiry: string = config.get('REFRESH_TOKEN_EXPIRY_TIME');

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastService } from 'angular-toastify';
 import { ConfirmationService } from 'primeng/api';
@@ -10,7 +10,7 @@ import { ICreateGameRequest, IGame, IMakeMoveRequest } from 'src/app/models';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'],
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit{
   gridSize: number = 0;
   isEnded = false;
   error = false
@@ -35,8 +35,9 @@ export class GameComponent implements OnInit {
     const data = sessionStorage.getItem("game")
     if(data){
       this.game=JSON.parse(data)
+    }else{
+      this._toastService.success('User logged in successfully');
     }
-    this._toastService.success('User logged in successfully');
   }
   initializeGame() {
     if (this.gridSize < 3 || this.gridSize > 25 || this.numberOfPlayers < 2 || this.numberOfPlayers > Math.floor((this.gridSize * this.gridSize) / 2)) {

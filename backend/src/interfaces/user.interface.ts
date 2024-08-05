@@ -2,5 +2,6 @@ export interface IUser{
     name: string;
     email: string;
     password?: string;
-    googleId?: string;
+    socialLoginId?: string;
+    socialLoginProvider?: string;
 }

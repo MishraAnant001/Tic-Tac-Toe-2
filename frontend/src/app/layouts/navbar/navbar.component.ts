@@ -15,6 +15,7 @@ export class NavbarComponent {
   constructor(private router: Router, private service: StorageService, private confirmationService: ConfirmationService, private _toastService: ToastService,private sharedService:SharedService,private authService: SocialAuthService) { }
   user = this.service.getName()
   logout() {
+    window.location.reload()
     this.confirmationService.confirm({
       message: 'Are you sure that you want to logout?',
       header: 'Confirmation',
@@ -22,7 +23,6 @@ export class NavbarComponent {
       accept: () => {
         this._toastService.success("user logged out successfully");
         this.service.clear();
-        this.authService.signOut()
         this.router.navigateByUrl("/auth")
       }
     });

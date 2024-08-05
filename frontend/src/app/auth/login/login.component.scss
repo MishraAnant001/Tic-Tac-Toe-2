@@ -105,3 +105,11 @@ h3 {
     padding: 0.5rem 1rem; /* Adjust button padding for smaller screens */
   }
 }
+.fb{
+  cursor: pointer;
+  font-size: 1.85rem;
+}
+.bi-facebook::before {
+  content: "\f344";
+  padding-top: 0.6rem;
+}

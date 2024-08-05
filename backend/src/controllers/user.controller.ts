@@ -27,10 +27,10 @@ export class UserController{
             next(error)
         }
     }
-    async googleLogin(req:Request,res:Response,next:NextFunction){
+    async socialLogin(req:Request,res:Response,next:NextFunction){
         try {       
             const data:IUser = req.body
-            const response = await service.googleLogin(data);
+            const response = await service.socialLogin(data);
             res.status(response.statusCode).json(response)
         } catch (error) {
             next(error)

@@ -1,23 +1,17 @@
-import { OAuth2Client } from 'google-auth-library';
-import { User } from '../models/user.model';
-import config from 'config';
-import { IUser } from '../interfaces';
+import { IUser } from "../interfaces";
+import { User } from "../models";
 
-const client = new OAuth2Client(config.get('GOOGLE_CLIENT_ID'));
-
-export const googleAuthService = {
-
-  async findOrCreateGoogleUser(payload: IUser) {
-    let user = await User.findOne({ googleId: payload.googleId });
+export const findOrCreateSocialUser = async (payload: IUser) => {
+    let user = await User.findOne({ socialLoginId: payload.socialLoginId, socialLoginProvider: payload.socialLoginProvider });
     if (!user) {
-      user = new User({
-        name: payload.name,
-        email: payload.email,
-        googleId: payload.googleId,
-        role: 'user',
-      });
-      await user.save();
+        user = new User({
+            name: payload.name,
+            email: payload.email,
+            socialLoginId: payload.socialLoginId,
+            socialLoginProvider: payload.socialLoginProvider,
+            role: 'user',
+        });
+        await user.save();
     }
     return user;
-  },
-};
+}
