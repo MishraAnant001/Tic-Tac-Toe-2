@@ -1,9 +1,9 @@
-import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FacebookLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastService } from 'angular-toastify';
-import { SharedService, StorageService, UserService } from 'src/app/core/services';
+import { StorageService, UserService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +13,8 @@ import { SharedService, StorageService, UserService } from 'src/app/core/service
 export class LoginComponent implements OnInit {
   form!: FormGroup;
   auth: any;
-  @ViewChild("btn") googlebtn!: ElementRef;
   submitted = false;
   authservice: any;
-  state!: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -26,9 +24,9 @@ export class LoginComponent implements OnInit {
     private _toastService: ToastService,
     private authService: SocialAuthService
   ) { }
-  ngOnDestroy(): void {
-    window.location.reload()
-  }
+  // ngOnDestroy(): void {
+  //   window.location.reload()
+  // }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -39,8 +37,11 @@ export class LoginComponent implements OnInit {
     this.onSocialLogin()
   }
 
+
   onSocialLogin() {
-    this.authservice = this.authService.authState.subscribe((user) => {
+    const test = this.authService.authState.subscribe((user) => {
+      console.log(user);
+
       if (user) {
         const newUser = {
           name: user.name,
@@ -52,13 +53,14 @@ export class LoginComponent implements OnInit {
         // console.log(newUser);
         this.service.socialLogin(newUser).subscribe({
           next: (response: any) => {
-            this.state = false
+            this._toastService.success('user logged in successfully');
             this.storageService.clear();
             this.storageService.setAccessToken(response.body.data.accessToken, false);
             this.storageService.setRefreshToken(response.body.data.refreshToken);
             this.storageService.setRole(response.body.data.user.role);
             this.storageService.setName(response.body.data.user.name);
             this.router.navigateByUrl("game");
+
           },
           error: (error: any) => {
             console.log(error);

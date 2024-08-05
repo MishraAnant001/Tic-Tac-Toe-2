@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { LayoutsModule } from './layouts/layouts.module';
 import { HeaderInterceptor } from './core/interceptor/header.interceptor';
 import { ErrorInterceptor } from './core/interceptor/error.interceptor';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 
 @NgModule({
   declarations: [AppComponent, GameComponent],
@@ -26,6 +27,7 @@ import { ErrorInterceptor } from './core/interceptor/error.interceptor';
     ConfirmDialogModule,
     RouterModule,
     LayoutsModule,
+    SocialLoginModule,
   ],
   providers: [
     ToastService,
@@ -39,6 +41,28 @@ import { ErrorInterceptor } from './core/interceptor/error.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
       multi: true,
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        lang: 'en',
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '293571805443-nf0kvuuh28dgbc9c8atqvklq1bkj7ip6.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('902556711697761')
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
     }
   ],
   bootstrap: [AppComponent],

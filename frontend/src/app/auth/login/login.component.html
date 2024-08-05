@@ -24,16 +24,9 @@
     <div class="container-fluid p-0 d-flex flex-column align-items-center justify-content-center">
       <button type="submit" class="btn btn-primary w-100 text-white mb-2">Submit</button>
       <div class="d-flex justify-content-center gap-2 align-items-center">
-        <asl-google-signin-button type='icon' size='medium' shape="pill" theme="filled_blue"></asl-google-signin-button>
+        <asl-google-signin-button type='icon'  role="button" size='medium' shape="pill" theme="filled_blue"></asl-google-signin-button>
         <i (click)="signInWithFB()" class="bi bi-facebook text-primary fb"></i>
       </div>
-      <!-- <div>
-        <button (click)="hii($event)">
-          <asl-google-signin-button type='icon' size='medium' shape="pill"
-            theme="filled_blue"></asl-google-signin-button>
-        </button>
-      </div> -->
-      <!-- <button (click)="signInWithGoogle()" type="button" class="btn btn-primary w-100 text-white my-2">Sign in with Google</button> -->
       <div class="mt-2">
         <span class="fw-bold">New user?</span>
         <a routerLink="/auth/signup" class="mt-3 link"> Register here</a>
