@@ -1,6 +1,9 @@
 {
     "PORT":8000,
     "MONGO_URI":"mongodb+srv://anantmanojmishra:kNp8tfu3NJ4SfBXp@backenddb.kuqejt8.mongodb.net/tic_tac_toe?retryWrites=true&w=majority&appName=BackendDB",
-    "SECRET_KEY":"b2eb8e95e53fb75b4cd5fbd66d03640175363e88bda632a5b5dd65a1d557d134",
-    "ROUNDS":10
+    "ACCESS_SECRET_KEY":"b2eb8e95e53fb75b4cd5fbd66d03640175363e88bda632a5b5dd65a1d557d134",
+    "ACCESS_TOKEN_EXPIRY_TIME":"15s",
+    "REFRESH_SECRET_KEY":"b2eb8e95e53fb75b4cd5fbd66d03jhigb76gtfy4bt4g7gvbbjhbr7yvb7g6vghj",
+    "REFRESH_TOKEN_EXPIRY_TIME":"30s",
+    "GOOGLE_CLIENT_ID":"'293571805443-nf0kvuuh28dgbc9c8atqvklq1bkj7ip6.apps.googleusercontent.com'"
 }

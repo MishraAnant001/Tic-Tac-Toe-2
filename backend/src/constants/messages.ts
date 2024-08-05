@@ -16,8 +16,11 @@ export const AUTH_MESSAGES = {
     INVALID_PASSWORD: 'password not valid!',
     LOGIN_SUCCESS: 'Login successfull',
     UNAUTHORIZED: 'unauthorized access!',
-    TOKEN_EXPIRED: 'token expired! kindly login again',
-    TOKEN_INVALID: 'token not valid!',
+    ACCESS_TOKEN_EXPIRED: 'access token expired! kindly login again',
+    ACCESS_TOKEN_INVALID: 'access token not valid!',
+    REFRESH_TOKEN_EXPIRED: 'refresh token expired! kindly login again',
+    REFRESH_TOKEN_INVALID: 'refresh token not valid!',
+    NOT_FOUND: 'token not found',
 }
 
 export const DB_MESSAGES = {

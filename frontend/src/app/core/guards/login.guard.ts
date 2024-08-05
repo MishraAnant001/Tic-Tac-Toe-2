@@ -7,7 +7,7 @@ export const loginGuard: CanActivateFn = (route, state) => {
   const router = inject(Router)
   const service = inject(StorageService)
   const location = inject(Location)
-  if(service.getToken()){
+  if(service.getAccessToken()){
     const role = service.getRole();
     if(role === "user"){
       router.navigate(["/game"])

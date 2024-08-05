@@ -14,13 +14,23 @@ export class UserService {
   signupUser(data: IUser) {
     return this.http.post(this.signupApi, data, { observe: "response" })
   }
-  loginUser(data:{email:string,password:string,remember:boolean}) {
+  loginUser(data: { email: string, password: string, remember: boolean }) {
     return this.http.post(this.loginApi, data, { observe: "response" })
   }
-  getAllUsers(){
+  googleLogin(data: {
+    name: string,
+    email: string,
+    googleId: string
+  }) {
+    return this.http.post(this.loginApi + "/google", data, { observe: "response" })
+  }
+  getAllUsers() {
     return this.http.get(this.getApi)
   }
-  deleteUser(id:string){
-    return this.http.delete(this.getApi+id)
+  deleteUser(id: string) {
+    return this.http.delete(this.getApi + id)
+  }
+  refreshAccessToken(token: string) {
+    return this.http.post(this.getApi + "generate-token", { refreshToken: token })
   }
 }

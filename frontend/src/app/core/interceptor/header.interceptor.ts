@@ -12,7 +12,7 @@ import { StorageService } from '../services';
 export class HeaderInterceptor implements HttpInterceptor {
   constructor(private service:StorageService) {}
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const token = this.service.getToken()
+    const token = this.service.getAccessToken()
     const modifiedrequest = request.clone({
       setHeaders:{
         'Authorization':`Bearer ${token}`

@@ -8,16 +8,21 @@ export class StorageService {
 
   constructor() { }
 
-  setToken(token:string,remember:boolean){
+  setAccessToken(token:string,remember:boolean){
     if(!remember){
-      sessionStorage.setItem("token",token)
+      sessionStorage.setItem("accessToken",token)
     }else{
-      localStorage.setItem("token",token)
+      localStorage.setItem("accessToken",token)
     }
   }
-
-  getToken(){
-    return sessionStorage.getItem("token") || localStorage.getItem("token")
+  setRefreshToken(token:string){
+      localStorage.setItem("refreshToken",token)
+  }
+  getRefreshToken(){
+    return localStorage.getItem('refreshToken')
+  }
+  getAccessToken(){
+    return sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken")
   }
 
   setRole(role:string){

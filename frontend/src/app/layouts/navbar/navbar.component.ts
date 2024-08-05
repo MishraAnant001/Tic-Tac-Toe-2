@@ -1,8 +1,9 @@
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastService } from 'angular-toastify';
 import { ConfirmationService } from 'primeng/api';
-import { StorageService } from 'src/app/core/services';
+import { SharedService, StorageService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,7 @@ import { StorageService } from 'src/app/core/services';
 })
 export class NavbarComponent {
 
-  constructor(private router: Router, private service: StorageService, private confirmationService: ConfirmationService, private _toastService: ToastService) { }
+  constructor(private router: Router, private service: StorageService, private confirmationService: ConfirmationService, private _toastService: ToastService,private sharedService:SharedService,private authService: SocialAuthService) { }
   user = this.service.getName()
   logout() {
     this.confirmationService.confirm({
@@ -21,6 +22,7 @@ export class NavbarComponent {
       accept: () => {
         this._toastService.success("user logged out successfully");
         this.service.clear();
+        this.authService.signOut()
         this.router.navigateByUrl("/auth")
       }
     });

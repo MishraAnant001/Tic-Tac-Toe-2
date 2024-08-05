@@ -47,6 +47,7 @@ export class SignupComponent implements OnInit {
       // console.log(this.form.value);
       this.service.signupUser(this.form.value).subscribe({
         next: (response) => {
+          console.log(response);
           this._toastService.success('User registered successfully');
           this.router.navigateByUrl('/auth/login');
         },

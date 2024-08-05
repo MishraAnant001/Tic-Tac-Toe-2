@@ -36,6 +36,7 @@ export class GameComponent implements OnInit {
     if(data){
       this.game=JSON.parse(data)
     }
+    this._toastService.success('User logged in successfully');
   }
   initializeGame() {
     if (this.gridSize < 3 || this.gridSize > 25 || this.numberOfPlayers < 2 || this.numberOfPlayers > Math.floor((this.gridSize * this.gridSize) / 2)) {
@@ -113,9 +114,20 @@ export class GameComponent implements OnInit {
       },
       error: (error) => {
         if (error.error) {
-          this._toastService.error(error.error.message);
+          this._toastService.dismissAll()
+          if((error.error.message as string).indexOf("refresh token expired")>-1){
+            this._toastService.error("Session expired ! Kindly login again")
+          }else{
+
+            this._toastService.error(error.error.message);
+          }
         } else {
-          this._toastService.error(error.message);
+          this._toastService.dismissAll()
+          if((error.message as string).indexOf("No refresh token available")>-1){
+            this._toastService.error("Session expired ! Kindly login again")
+          }else{
+            this._toastService.error(error.message);
+          }
         }
       },
     });
@@ -165,9 +177,19 @@ export class GameComponent implements OnInit {
       error: (error) => {
         if (error.error) {
           this._toastService.dismissAll()
-          this._toastService.error(error.error.message);
+          if((error.error.message as string).indexOf("refresh token expired")>-1){
+            this._toastService.error("Session expired ! Kindly login again")
+          }else{
+
+            this._toastService.error(error.error.message);
+          }
         } else {
-          this._toastService.error(error.message);
+          this._toastService.dismissAll()
+          if((error.message as string).indexOf("No refresh token available")>-1){
+            this._toastService.error("Session expired ! Kindly login again")
+          }else{
+            this._toastService.error(error.message);
+          }
         }
       },
     });

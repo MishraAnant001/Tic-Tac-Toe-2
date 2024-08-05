@@ -12,6 +12,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { RouterModule } from '@angular/router';
 import { LayoutsModule } from './layouts/layouts.module';
 import { HeaderInterceptor } from './core/interceptor/header.interceptor';
+import { ErrorInterceptor } from './core/interceptor/error.interceptor';
 
 @NgModule({
   declarations: [AppComponent, GameComponent],
@@ -24,7 +25,7 @@ import { HeaderInterceptor } from './core/interceptor/header.interceptor';
     AngularToastifyModule,
     ConfirmDialogModule,
     RouterModule,
-    LayoutsModule
+    LayoutsModule,
   ],
   providers: [
     ToastService,
@@ -34,7 +35,12 @@ import { HeaderInterceptor } from './core/interceptor/header.interceptor';
       useClass: HeaderInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    }
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
