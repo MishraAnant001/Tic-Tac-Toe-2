@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mainRouter = void 0;
+const express_1 = require("express");
+const game_route_1 = require("./game.route");
+const user_route_1 = require("./user.route");
+const dashboard_route_1 = require("./dashboard.route");
+exports.mainRouter = (0, express_1.Router)();
+exports.mainRouter.use("/api/v1/game", game_route_1.gameRouter);
+exports.mainRouter.use("/api/v1/user", user_route_1.userRouter);
+exports.mainRouter.use("/api/v1/dashboard", dashboard_route_1.dashboardRouter);
