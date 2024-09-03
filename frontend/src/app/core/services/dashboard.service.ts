@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DashboardService {
-  private adminApi = "https://5cg4v22c-8000.inc1.devtunnels.ms:8000/api/v1/dashboard/admin"
+  private adminApi = "https://5cg4v22c-8000.inc1.devtunnels.ms/api/v1/dashboard/admin"
   constructor(private http:HttpClient) { }
 
   getAdminData(){
