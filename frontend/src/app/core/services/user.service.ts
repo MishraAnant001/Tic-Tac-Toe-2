@@ -6,9 +6,9 @@ import { IUser } from 'src/app/models';
   providedIn: 'root'
 })
 export class UserService {
-  private signupApi = "http://192.168.4.5:8000/api/v1/user/signup"
-  private loginApi = "http://192.168.4.5:8000/api/v1/user/login"
-  private getApi = "http://192.168.4.5:8000/api/v1/user/"
+  private signupApi = "https://5cg4v22c-8000.inc1.devtunnels.ms:8000/api/v1/user/signup"
+  private loginApi = "https://5cg4v22c-8000.inc1.devtunnels.ms:8000/api/v1/user/login"
+  private getApi = "https://5cg4v22c-8000.inc1.devtunnels.ms:8000/api/v1/user/"
   constructor(private http: HttpClient) { }
 
   signupUser(data: IUser) {
